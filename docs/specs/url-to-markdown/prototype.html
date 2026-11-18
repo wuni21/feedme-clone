@@ -266,6 +266,77 @@
   .sh-vp-390 .hero h1 { font-size: 20px }
 </style>
 
+<style>
+  /* ── LG style: brand tokens and shapes (approved over the neutral shadcn default) ── */
+  :root {
+    --lg-red: #a50034;            /* LG Red (brand primary) */
+    --background: #ffffff;
+    --foreground: #111111;
+    --card: #ffffff;
+    --card-foreground: #111111;
+    --popover: #ffffff;
+    --primary: var(--lg-red);
+    --primary-foreground: #ffffff;
+    --muted: #f6f3f2;             /* warm light gray surface */
+    --muted-foreground: #6b6b6b;
+    --accent: #f6f3f2;
+    --border: #e4e0de;
+    --input: #cfcac8;
+    --ring: #a50034;
+    --destructive: #d0021b;
+    --radius: 1rem;
+    /* LG Smart / LG EI fonts are proprietary — system Korean stack substituted */
+    --font: "LG Smart", "LG EI Text", "Pretendard", "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
+  }
+  .sh-theme-dark {
+    --lg-red: #e0436e;
+    --background: #121212;
+    --foreground: #f2f2f2;
+    --card: #1c1c1c;
+    --card-foreground: #f2f2f2;
+    --popover: #1c1c1c;
+    --primary: #c8285a;
+    --primary-foreground: #ffffff;
+    --muted: #262423;
+    --muted-foreground: #a8a4a2;
+    --accent: #2c2a29;
+    --border: #34312f;
+    --input: #4a4644;
+    --ring: #e0436e;
+    --destructive: #ff5a6e;
+  }
+  .app { font-family: var(--font); gap: 32px }
+  .brand-mark { background: var(--lg-red); color: #fff; border-radius: 50% }
+  .brand { font-weight: 700; font-size: 17px }
+  .hero h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3 }
+  .hero p { font-size: 16px }
+  .btn { border-radius: 999px; font-weight: 600 }
+  .btn-default { height: 44px; padding: 0 24px }
+  .btn-sm { height: 36px; padding: 0 16px }
+  .btn-outline { border-color: var(--foreground) }
+  .btn-icon { width: 40px; padding: 0 }
+  .input { height: 44px; border-radius: 999px; padding-left: 20px; font-size: 15px }
+  .input-clear { top: 4px; right: 4px; height: 36px; width: 36px }
+  .card { border-radius: 20px; box-shadow: 0 2px 12px rgb(0 0 0 / .06) }
+  .card-pad { padding: 24px }
+  .result-head { padding: 28px 28px 24px }
+  .result-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em }
+  .send { background: var(--muted); padding: 20px 28px; border-bottom: 0 }
+  .send-label { font-size: 14px; font-weight: 700 }
+  .toggle { border-radius: 999px; height: 36px; padding: 0 16px; font-size: 14px }
+  .toggle[aria-pressed="true"] { background: var(--foreground); color: var(--background); border-color: var(--foreground) }
+  .md { padding: 28px }
+  .md h2 { font-weight: 700 }
+  .md blockquote { border-left-color: var(--lg-red) }
+  .meta a { color: var(--muted-foreground) }
+  .alert { border-radius: 16px }
+  .hero h1, .result-head h2 { word-break: keep-all; overflow-wrap: anywhere }
+  .app { grid-template-columns: minmax(0, 1fr) }
+  .sh-vp-390 .url-form > .btn { flex: none }
+  .sh-vp-390 .hero h1 { font-size: 24px }
+  @media (max-width: 640px) { .hero h1 { font-size: 24px } }
+</style>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>

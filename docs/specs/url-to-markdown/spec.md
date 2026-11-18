@@ -4,8 +4,9 @@
 
 ## 연결된 자료
 
-- [prototype.html](prototype.html) — 승인된 화면 구성. 화면 배치, 요소 순서, 상태별 모습(빈 화면·변환 중·결과·저자 없는 결과·오류 3종), 문구, 좁은 화면에서 쌓이는 순서를 정한다. 프로토타입 안의 데이터와 지연 시간은 더미다. 시험용으로 URL에 `fail`/`login`/`docs`를 넣으면 상태가 바뀌는 동작은 제품 동작이 아니다.
+- [prototype.html](prototype.html) — 승인된 화면 구성. 화면 배치, 요소 순서, 상태별 모습(빈 화면·변환 중·결과·저자 없는 결과·오류 3종), 문구, 좁은 화면에서 쌓이는 순서, LG 스타일의 색·모서리·글자 크기 값(라이트·다크)을 정한다. 프로토타입 안의 데이터와 지연 시간은 더미다. 시험용으로 URL에 `fail`/`login`/`docs`를 넣으면 상태가 바뀌는 동작은 제품 동작이 아니다.
 - [docs/decisions/ui-composition.md](../../decisions/ui-composition.md) — 일반 UI는 shadcn/ui component로 구성하고 semantic token을 쓴다.
+- [docs/decisions/brand-style.md](../../decisions/brand-style.md) — 화면 전체에 LG 스타일(브랜드 색, 둥근 모양, 서체)을 입히는 규칙이다.
 - [docs/decisions/dependency-versions.md](../../decisions/dependency-versions.md) — 새 의존성(defuddle 등)의 버전 범위를 정하는 기준이다.
 
 ## 사용자가 얻는 결과
@@ -65,10 +66,17 @@
 
 다크 모드
 - 헤더의 버튼으로 라이트와 다크를 오간다. 아이콘과 접근성 이름("다크 모드로 전환"/"라이트 모드로 전환")이 현재 상태에 맞게 바뀐다.
-- 두 모드 모두 프로젝트의 semantic token(`app/globals.css`의 `:root`와 `.dark`)으로 칠해진다.
+- 두 모드 모두 프로젝트의 semantic token(`app/globals.css`의 `:root`와 `.dark`)으로 칠해진다. 토큰 값은 prototype.html의 LG 스타일 값으로 바꾼다.
+
+LG 스타일 ([brand-style](../../decisions/brand-style.md))
+- 변환하기, ChatGPT로 열기, Claude로 열기 버튼은 LG Red(라이트 `#A50034`) 바탕에 흰 글자다. 그 밖의 버튼과 고른 프롬프트에는 빨강을 쓰지 않는다.
+- 버튼, URL 입력창, 프롬프트 선택 버튼은 알약 모양(완전히 둥근 모서리)이고, 카드는 크게 둥근 모서리에 옅은 그림자를 가진다.
+- 화면 큰 제목과 결과 제목은 본문보다 확연히 크고 굵다. 한국어 제목은 단어 중간에서 줄이 바뀌지 않는다.
+- 다크 모드에서는 어두운 배경에서도 읽히도록 더 밝은 빨강을 쓴다.
 
 화면 크기
 - 좁은 화면(약 640px 이하)에서는 입력창과 변환 버튼, 결과 헤더와 내보내기 버튼이 세로로 쌓이고, 버튼을 숨기지 않는다.
+- 폭 390px에서 긴 URL이나 제목이 있어도 화면이 옆으로 밀리지 않고, 변환 버튼이 넓은 화면과 같은 높이를 유지한다.
 
 ## 정해진 제약과 이유
 
@@ -76,6 +84,7 @@
 - **페이지는 서버에서 가져온다.** 브라우저에서 다른 사이트를 직접 가져오면 CORS에 막히기 때문이다.
 - **LLM에는 클립보드 + 새 탭으로 넘긴다.** URL의 `?q=`로 입력창을 미리 채우는 방식은 주소 길이 제한 때문에 긴 본문이 잘리거나 열리지 않는다. 이 서비스는 localhost에서 돌기 때문에 LLM이 링크로 본문을 읽어 갈 수도 없다. 그래서 길이와 상관없이 항상 같은 방식으로 동작하는 클립보드 방식을 골랐다(사용자 확정).
 - UI는 shadcn/ui component를 쓴다(Button, Input, Field, Card, Alert, Empty, Skeleton, Toggle Group, Sonner 등). LLM 보내기 칸만 기존 component를 조합한 프로젝트 전용 구성이다.
+- **화면은 LG 스타일로 칠한다.** 사용자가 현재 shadcn 기본 회색조 안과 비교한 뒤 LG 스타일을 골랐다. 규칙과 이유는 [brand-style](../../decisions/brand-style.md)에 있다. LG 전용 서체(LG Smart, LG EI)는 공개되지 않아 시스템 한글 서체로 대신한다.
 
 ## 가정 (바꿔도 되는 기본값)
 
@@ -103,6 +112,7 @@
 
 - 일부 사이트는 서버에서 보낸 요청을 막는다(403, 봇 차단 페이지). 이때 사용자는 오류만 보고 본문을 얻지 못한다.
 - 봇 차단 페이지가 200으로 응답하면, defuddle이 그 차단 문구를 본문으로 뽑아 "결과"처럼 보일 수 있다.
+- LG 브랜드 색과 이름을 이 서비스에 써도 되는지는 회사 브랜드 가이드라인으로 확인하지 않았다. LG 로고는 쓰지 않는다.
 - 새 탭 열기가 팝업 차단에 걸리면 클립보드에만 내용이 남는다.
 
 ## Setup before implementation
