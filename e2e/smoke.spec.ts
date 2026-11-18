@@ -1,10 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-test("홈 화면이 열리고 시작 안내 제목이 보인다", async ({ page }) => {
+test("빈 화면에서는 변환하기 버튼이 눌리지 않고, 잘못된 URL은 안내 문구를 보여 준다", async ({
+  page,
+}) => {
   await page.goto("/");
 
-  await expect(page).toHaveTitle("Create Next App");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "To get started"
-  );
+  const convert = page.getByRole("button", { name: "변환하기" });
+  await expect(convert).toBeDisabled();
+
+  await page.getByLabel("페이지 URL").fill("example.com");
+  await convert.click();
+  await expect(
+    page.getByText("http:// 또는 https://로 시작하는 올바른 URL을 입력하세요."),
+  ).toBeVisible();
 });

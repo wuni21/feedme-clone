@@ -9,28 +9,28 @@ Source: `app/globals.css`. Update this section when that source changes.
 
 | Token | Light | Dark |
 | --- | --- | --- |
-| `--background` | `oklch(1 0 0)` | `oklch(0.145 0 0)` |
-| `--foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` |
-| `--card` | `oklch(1 0 0)` | `oklch(0.205 0 0)` |
-| `--primary` | `oklch(0.205 0 0)` | `oklch(0.922 0 0)` |
-| `--primary-foreground` | `oklch(0.985 0 0)` | `oklch(0.205 0 0)` |
-| `--secondary` | `oklch(0.97 0 0)` | `oklch(0.269 0 0)` |
-| `--muted` | `oklch(0.97 0 0)` | `oklch(0.269 0 0)` |
-| `--muted-foreground` | `oklch(0.556 0 0)` | `oklch(0.708 0 0)` |
-| `--accent` | `oklch(0.97 0 0)` | `oklch(0.269 0 0)` |
-| `--destructive` | `oklch(0.577 0.245 27.325)` | `oklch(0.704 0.191 22.216)` |
-| `--border` | `oklch(0.922 0 0)` | `oklch(1 0 0 / 10%)` |
-| `--input` | `oklch(0.922 0 0)` | `oklch(1 0 0 / 15%)` |
-| `--ring` | `oklch(0.708 0 0)` | `oklch(0.556 0 0)` |
+| `--background` | `#ffffff` | `#121212` |
+| `--foreground` | `#111111` | `#f2f2f2` |
+| `--card` | `#ffffff` | `#1c1c1c` |
+| `--primary` | `#a50034` | `#c8285a` |
+| `--primary-foreground` | `#ffffff` | `#ffffff` |
+| `--secondary` | `#f6f3f2` | `#2c2a29` |
+| `--muted` | `#f6f3f2` | `#262423` |
+| `--muted-foreground` | `#6b6b6b` | `#a8a4a2` |
+| `--accent` | `#f6f3f2` | `#2c2a29` |
+| `--destructive` | `#d0021b` | `#ff5a6e` |
+| `--border` | `#e4e0de` | `#34312f` |
+| `--input` | `#cfcac8` | `#4a4644` |
+| `--ring` | `#a50034` | `#e0436e` |
 
-Text roles: `--font-sans` (Geist), `--font-mono` (Geist Mono); heading uses `--font-sans`.
-Radius and spacing: `--radius` `0.625rem`; `--radius-sm`…`--radius-4xl` scale from it.
+Text roles: `--font-sans` (LG Smart, LG EI Text, Pretendard, Malgun Gothic 순서의 시스템 한글 서체), `--font-mono` (Geist Mono); heading uses `--font-sans`.
+Radius and spacing: `--radius` `1rem`; `--radius-sm`…`--radius-4xl` scale from it.
 
 ## Components
 
 Source: `components/ui`. Update this section when it changes.
 
-- `Button`
+- `Alert`, `Button`, `Card`, `Empty`, `Field`, `Input`, `Label`, `Separator`, `Skeleton`, `Sonner`, `Toggle`, `ToggleGroup`
 
 ## Rejected patterns
 
